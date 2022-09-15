@@ -15,6 +15,12 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 ![Screenshot from 2022-09-15 03-53-06](https://user-images.githubusercontent.com/77942746/190295122-478a0853-772e-47de-b102-7cccc859971d.png)
 ![Screenshot from 2022-09-15 03-52-26](https://user-images.githubusercontent.com/77942746/190295163-62714698-3ca5-440d-a7fa-10738ccbe364.png)
+![Screenshot from 2022-09-15 04-03-06](https://user-images.githubusercontent.com/77942746/190295946-5ad6fbdf-0b68-4592-a326-831941c1ab1b.png)
+![Screenshot from 2022-09-15 04-02-47](https://user-images.githubusercontent.com/77942746/190295991-2f0bcaa4-8f5d-4343-800c-cb44d8b56b40.png)
+![Screenshot from 2022-09-15 04-02-27](https://user-images.githubusercontent.com/77942746/190296018-3dea7ebb-f389-4e1c-be6c-4052d181cf1e.png)
+![Screenshot from 2022-09-15 04-02-07](https://user-images.githubusercontent.com/77942746/190296058-48a3ad85-56ca-413d-b99e-7c0b1a31b67a.png)
+![Screenshot from 2022-09-15 04-01-38](https://user-images.githubusercontent.com/77942746/190296084-960ba36a-7795-44b9-be3e-a6f740d40a93.png)
+
 
 
 
