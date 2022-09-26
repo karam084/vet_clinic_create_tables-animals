@@ -96,6 +96,7 @@ insert into visits (animals_id, vets_id, visit_date) values ((select id from ani
 insert into visits (animals_id, vets_id, visit_date) values ((select id from animals where name = 'Blossom'), (select id from vets where name = 'Stephanie Mendez'), '2020-05-24');
 insert into visits (animals_id, vets_id, visit_date) values ((select id from animals where name = 'Blossom'), (select id from vets where name = 'William Tatcher'), '2021-01-11');
 
+INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
 insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
 
 INSERT INTO animals (name) VALUES ('Agumon'), ('Gabumon'), ('Pikachu'), ('Devimon'), ('Charmander'), ('Plantmon'), ('Squirtle'), ('Angemon'), ('Boarmon'), ('Blossom');
