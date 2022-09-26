@@ -97,3 +97,6 @@ insert into visits (animals_id, vets_id, visit_date) values ((select id from ani
 insert into visits (animals_id, vets_id, visit_date) values ((select id from animals where name = 'Blossom'), (select id from vets where name = 'William Tatcher'), '2021-01-11');
 
 insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
+INSERT INTO animals (name) VALUES ('Agumon'), ('Gabumon'), ('Pikachu'), ('Devimon'), ('Charmander'), ('Plantmon'), ('Squirtle'), ('Angemon'), ('Boarmon'), ('Blossom');
+INSERT INTO vets (name) VALUES ('William Tatcher'), ('Maisy Smith'), ('Stephanie Mendez'), ('Jack Harkness');
