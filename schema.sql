@@ -1,67 +1,56 @@
 /* Database schema to keep the structure of entire database. */
 
-CREATE DATABASE vet_clinics;
-
-CREATE TABLE animals (
-    id SERIAL,
-    name text,
-    date_of_birth date,
-    escape_attempts integer,
-    neutered boolean,
-    weight_kg decimal,
-    PRIMARY KEY(id)
-);
-alter table animals add species text;
-
-create table owners (
-    id integer generated always as identity,
-    full_name text,
-    age integer,
-    primary key(id)
+CREATE TABLE owners(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  full_name VARCHAR(20),
+  age INT,
+  PRIMARY KEY(id)
 );
 
-create table species (
-    id integer generated always as identity,
-    name text,
-    primary key(id)
+CREATE TABLE species(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  PRIMARY KEY(id)
 );
 
-alter table animals drop column species;
-alter table animals add column species_id integer;
-alter table animals add constraint FK_SPECIES foreign key (species_id) references species (id) on delete set null;
-
-alter table animals add column owner_id integer;
-alter table animals add constraint FK_OWNER foreign key (owner_id) references owners (id) on delete set null;
-
-create table vets (
-    id integer generated always as identity,
-    name text,
-    age integer,
-    data_of_graduation date,
-    primary key (id)
+CREATE TABLE animals(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  date_of_birth DATE,
+  escape_attempts INT,
+  neutered BOOLEAN,
+  weight_kg DECIMAL,
+  species_id INT REFERENCES species(id),
+  owner_id INT REFERENCES owners(id),
+  PRIMARY KEY(id)
 );
 
-create table specializations (
-    species_id integer not null,
-    vets_id integer not null,
-    constraint "FK_SPECIES" foreign key (species_id) references species (id) on delete set null,
-    constraint "FK_VETS" foreign key (vets_id) references vets (id) on delete set null,
-    primary key (species_id, vets_id)
+CREATE TABLE vets(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(20),
+  age INT,
+  date_of_graduation DATE,
+  PRIMARY KEY(id)
 );
 
-create table visits (
-    animals_id integer not null,
-    vets_id integer not null,
-    visit_date date not null,
-    constraint "FK_ANIMALS" foreign key (animals_id) references animals (id) on delete set null,
-    constraint "FK_VETS" foreign key (vets_id) references vets (id) on delete set null,
-    primary key (animals_id, vets_id, visit_date)
+CREATE TABLE specializations(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  species_id INT REFERENCES species(id),
+  vet_id INT REFERENCES vets(id),
+  PRIMARY KEY(id)
 );
 
-alter table owners add COLUMN email varchar(120);
+CREATE TABLE visits(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  animal_id INT REFERENCES animals(id),
+  vet_id INT REFERENCES vets(id),
+  date_of_visit DATE,
+  PRIMARY KEY(id)
+);
 
-create index visits_animals ON visits(animals_id);
 
-create index visits_vet_ids ON visits(vets_id);
+CREATE INDEX animal_id_asc ON visits(animal_id ASC);
 
-create index owners_emails ON owners(email);
+CREATE INDEX vet_id_asc ON visits(vet_id ASC);
+
+CREATE INDEX email_asc ON owners(email ASC);
